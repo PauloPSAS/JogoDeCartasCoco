@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -9,19 +6,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 public class ServidorJogo {
     private static final int PORTA = 12345;             // Porta fixa usada para aceitar conexões dos clientes
-    private List<Jogador> jogadores;                    // Lista de jogadores conectados
+    private static List<Jogador> jogadores;                    // Lista de jogadores conectados
     private Map<Socket, Jogador> mapaJogadores;        // Mapeia sockets para objeto Jogador
     private ServerSocket servidor;                      // Socket do servidor que aguarda conexões
     private boolean jogoIniciado;                       // Indica se o jogo já foi iniciado
-    private GerenciadorComandos gerenciadorComandos;    // Responsável por processar comandos dos jogadores
+    private GerenciadorComandos gerenciadorComandos;// Responsável por processar comandos dos jogadores
+    private  Turno turno;
+
 
     public ServidorJogo() {
         this.jogadores = new ArrayList<>();
         this.mapaJogadores = new HashMap<>();
         this.jogoIniciado = false;
         this.gerenciadorComandos = new GerenciadorComandos();
+
     }
 
     /**
@@ -224,11 +225,23 @@ public class ServidorJogo {
         }
     }
 
+    public void processarJogada(ClienteJogo jogador){
+        if(turno.getJogadorAtual()==jogador) {
+            System.out.println("jogador fez uma jogada!");
+            turno.proximoTurno();
+            turno.notificarJogadores();
+        } else {
+            jogador.enviarMensagem("Não é sua vez");
+        }
+    }
+
     /**
      * Método principal que inicializa o servidor.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)  {
         ServidorJogo servidorJogo = new ServidorJogo();
         servidorJogo.iniciarServidor();
     }
+
+
 }

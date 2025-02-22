@@ -1,3 +1,5 @@
+
+
 public class GerenciadorComandos {
 
     /**
@@ -27,6 +29,8 @@ public class GerenciadorComandos {
      */
     public void sairDoJogo(Jogador jogador) {
         System.out.println("Jogador " + jogador + " saiu do jogo.");
+
+
 
         // Aqui será implementada a lógica para remover o jogador da partida
     }

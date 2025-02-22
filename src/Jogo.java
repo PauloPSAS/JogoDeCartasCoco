@@ -41,7 +41,7 @@ public class Jogo {
         selecionarJogadorInicial();
     }
 
-    // Distribui 5 cartas Cocô para cada jogador
+      // Distribui 5 cartas Cocô para cada jogador
     private void distribuirCartasIniciais() {
         for (Jogador jogador : jogadores) {
             for (int i = 0; i < 5; i++) {
@@ -179,3 +179,4 @@ public class Jogo {
         return numeroEntupimento;
     }
 }
+

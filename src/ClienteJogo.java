@@ -48,7 +48,7 @@ public class ClienteJogo {
      * Envia uma mensagem para o servidor.
      * @param mensagem Mensagem a ser enviada
      */
-    private void enviarMensagem(String mensagem) {
+    void enviarMensagem(String mensagem) {
         out.println(mensagem);
     }
 
