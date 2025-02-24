@@ -50,7 +50,7 @@ public class TelaJogo extends JFrame {
             switch (carta.getCor().toLowerCase()) {
                 case "amarelo": botaoCarta.setBackground(Color.YELLOW); break;
                 case "vermelho": botaoCarta.setBackground(Color.RED); break;
-                case "roxo": botaoCarta.setBackground(new Color(128, 0, 128)); break;
+                case "roxo": botaoCarta.setBackground(new Color(243, 145, 243)); break;
                 case "preto": botaoCarta.setBackground(Color.GRAY); botaoCarta.setForeground(Color.WHITE); break;
             }
 
@@ -74,7 +74,7 @@ public class TelaJogo extends JFrame {
         CartaPrivada cartaEntupimento = jogo.getCartaEntupimento();
         if (cartaEntupimento != null) {
             System.out.println("Atualizando Interface - Carta de Entupimento: " + cartaEntupimento);
-            labelCartaEntupimento.setText("Entupimento: " + cartaEntupimento.toString());
+            labelCartaEntupimento.setText("Entupimento: " + cartaEntupimento);
         } else {
             labelCartaEntupimento.setText("Entupimento: Nenhuma carta definida");
         }
@@ -91,8 +91,8 @@ public class TelaJogo extends JFrame {
             switch (carta.getCor().toLowerCase()) {
                 case "amarelo": lblCarta.setBackground(Color.YELLOW); break;
                 case "vermelho": lblCarta.setBackground(Color.RED); break;
-                case "roxo": lblCarta.setBackground(new Color(128, 0, 128)); break;
-                case "preto": lblCarta.setBackground(Color.GRAY); lblCarta.setForeground(Color.WHITE); break;
+                case "roxo": lblCarta.setBackground(new Color(243, 145, 243)); break;
+                case "preto": lblCarta.setBackground(Color.BLACK); lblCarta.setForeground(Color.WHITE); break;
             }
 
             painelPilha.add(lblCarta);
@@ -123,11 +123,11 @@ public class TelaJogo extends JFrame {
         jogoExemplo.adicionarJogador(jogadorExemplo);
 
         // Distribuir cartas iniciais ao jogador (5 cartas)
-        jogadorExemplo.adicionarCarta(new CartaNumerica("Amarelo", 4));
+        jogadorExemplo.adicionarCarta(new CartaNumerica("Amarelo", 0));
         jogadorExemplo.adicionarCarta(new CartaNumerica("Roxo", 4));
         jogadorExemplo.adicionarCarta(new CartaNumerica("Vermelho", 3));
         jogadorExemplo.adicionarCarta(new CartaEspecial("Amarelo", CartaEspecial.Tipo.PULAR));
-        jogadorExemplo.adicionarCarta(new CartaNumerica("Vermelho", 2));
+        jogadorExemplo.adicionarCarta(new CartaNumerica("Amarelo", 2));
 
         // Definir uma carta de entupimento para o jogo
         jogoExemplo.definirCartaEntupimento(new CartaPrivada(10)); // Deve ser a mesma do console
