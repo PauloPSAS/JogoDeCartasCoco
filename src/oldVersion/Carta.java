@@ -1,3 +1,5 @@
+package oldVersion;
+
 public class Carta {
     private int numero;     // Número da carta (para cartas numéricas)
     private String cor;     // Cor da carta (Amarelo, Vermelho, Roxo, Preto)
@@ -43,11 +45,11 @@ public class Carta {
     @Override
     public String toString() {
         if (tipo.equals("Normal")) {
-            return "Carta Cocô: " + numero + " - Cor: " + cor;
+            return "oldVersion.Carta Cocô: " + numero + " - Cor: " + cor;
         } else if (tipo.equals("Privada")) {
-            return "Carta Privada: " + numero;
+            return "oldVersion.Carta Privada: " + numero;
         } else {
-            return "Carta especial: " + tipo + " - Cor: " + cor;
+            return "oldVersion.Carta especial: " + tipo + " - Cor: " + cor;
         }
     }
 }

@@ -1,11 +1,13 @@
+package oldVersion;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class Jogo {
     private List<Jogador> jogadores;        // Lista de jogadores
-    private Baralho baralhoCoco;            // Baralho das Cartas Cocô
-    private Baralho baralhoPrivada;         // Baralho das Cartas Privadas
+    private Baralho baralhoCoco;            // oldVersion.Baralho das Cartas Cocô
+    private Baralho baralhoPrivada;         // oldVersion.Baralho das Cartas Privadas
     private List<Carta> privada;            // Pilha de cartas na privada
     private int indiceJogadorAtual;         // Índice do jogador que está na vez
     private int numeroEntupimento;          // Número atual da privada

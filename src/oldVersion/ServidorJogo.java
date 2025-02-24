@@ -1,3 +1,5 @@
+package oldVersion;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,7 +14,7 @@ import java.util.Map;
 public class ServidorJogo {
     private static final int PORTA = 12345;             // Porta fixa usada para aceitar conexões dos clientes
     private List<Jogador> jogadores;                    // Lista de jogadores conectados
-    private Map<Socket, Jogador> mapaJogadores;        // Mapeia sockets para objeto Jogador
+    private Map<Socket, Jogador> mapaJogadores;         // Mapeia sockets para objeto oldVersion.Jogador
     private ServerSocket servidor;                      // Socket do servidor que aguarda conexões
     private boolean jogoIniciado;                       // Indica se o jogo já foi iniciado
     private GerenciadorComandos gerenciadorComandos;    // Responsável por processar comandos dos jogadores
@@ -98,7 +100,7 @@ public class ServidorJogo {
      */
     private void iniciarJogo() {
         jogoIniciado = true;
-        System.out.println("Jogo iniciado com " + mapaJogadores.size() + " jogadores!");
+        System.out.println("oldVersion.Jogo iniciado com " + mapaJogadores.size() + " jogadores!");
     }
 
     /**
@@ -137,7 +139,7 @@ public class ServidorJogo {
                     mapaJogadores.put(cliente, jogador);
                     jogadores.add(jogador);
                 }
-                enviarMensagemParaTodos("Jogador " + nome + " entrou na partida.");
+                enviarMensagemParaTodos("oldVersion.Jogador " + nome + " entrou na partida.");
             }
 
             String mensagem;
@@ -167,19 +169,19 @@ public class ServidorJogo {
                 if (partes.length > 1) {
                     int indiceCarta = Integer.parseInt(partes[1]);
                     gerenciadorComandos.jogarCartas(jogador, indiceCarta);
-                    enviarMensagemParaTodos("Jogador " + nomeJogador + " jogou uma carta.");
+                    enviarMensagemParaTodos("oldVersion.Jogador " + nomeJogador + " jogou uma carta.");
                 }
                 break;
 
             case "COMPRAR_CARTA":
                 gerenciadorComandos.comprarCarta(jogador);
-                enviarMensagemParaTodos("Jogador " + nomeJogador + " comprou uma carta.");
+                enviarMensagemParaTodos("oldVersion.Jogador " + nomeJogador + " comprou uma carta.");
                 break;
 
             case "SAIR":
                 gerenciadorComandos.sairDoJogo(jogador);
                 removerCliente(cliente);
-                enviarMensagemParaTodos("Jogador " + nomeJogador + " saiu do jogo.");
+                enviarMensagemParaTodos("oldVersion.Jogador " + nomeJogador + " saiu do jogo.");
                 break;
 
             default:
@@ -196,8 +198,8 @@ public class ServidorJogo {
             Jogador jogadorRemovido = mapaJogadores.remove(cliente);
             if (jogadorRemovido != null) {
                 jogadores.remove(jogadorRemovido);
-                enviarMensagemParaTodos("Jogador " + jogadorRemovido.getNome() + " foi desconectado.");
-                System.out.println("Jogador " + jogadorRemovido.getNome() + " removido do jogo.");
+                enviarMensagemParaTodos("oldVersion.Jogador " + jogadorRemovido.getNome() + " foi desconectado.");
+                System.out.println("oldVersion.Jogador " + jogadorRemovido.getNome() + " removido do jogo.");
             }
         }
         try {

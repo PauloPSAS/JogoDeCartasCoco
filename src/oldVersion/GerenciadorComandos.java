@@ -1,3 +1,5 @@
+package oldVersion;
+
 public class GerenciadorComandos {
 
     /**
@@ -6,7 +8,7 @@ public class GerenciadorComandos {
      * @param indiceCarta Índice da carta a ser jogada
      */
     public void jogarCartas(Jogador jogador, int indiceCarta) {
-        System.out.println("Jogador " + jogador + " jogou a carta no índice " + indiceCarta);
+        System.out.println("oldVersion.Jogador " + jogador + " jogou a carta no índice " + indiceCarta);
 
         // Aqui será implementada a lógica para jogar a carta no jogo...
     }
@@ -16,7 +18,7 @@ public class GerenciadorComandos {
      * @param jogador Identificação do jogador
      */
     public void comprarCarta(Jogador jogador) {
-        System.out.println("Jogador " + jogador + " comprou uma carta.");
+        System.out.println("oldVersion.Jogador " + jogador + " comprou uma carta.");
 
         // Aqui será implementada a lógica para o jogador comprar uma carta...
     }
@@ -26,7 +28,7 @@ public class GerenciadorComandos {
      * @param jogador Identificação do jogador
      */
     public void sairDoJogo(Jogador jogador) {
-        System.out.println("Jogador " + jogador + " saiu do jogo.");
+        System.out.println("oldVersion.Jogador " + jogador + " saiu do jogo.");
 
         // Aqui será implementada a lógica para remover o jogador da partida
     }
