@@ -252,12 +252,6 @@ public class Jogo {
         }
     }
 
-    public void definirCartaEntupimento(CartaPrivada carta) {
-        this.cartaEntupimento = carta;
-        System.out.println("Carta de Entupimento Definida: " + this.cartaEntupimento);
-    }
-
-
     // Método para retornar a lista de jogadores (se precisar usar em outra parte do código)
     public List<Jogador> getJogadores() {
         return jogadores;
@@ -266,5 +260,4 @@ public class Jogo {
     public List<Carta> getPilhaPrivada() {
         return pilhaPrivada;
     }
-
 }
