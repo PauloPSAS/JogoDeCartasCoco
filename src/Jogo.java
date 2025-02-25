@@ -3,28 +3,24 @@ import java.util.List;
 import java.util.Random;
 
 public class Jogo {
-    private List<Jogador> jogadores;        // Lista de jogadores
-    private Baralho baralhoCoco;            // Baralho das Cartas Cocô
-    private Baralho baralhoPrivada;         // Baralho das Cartas Privadas
-    private List<Carta> privada;            // Pilha de cartas na privada
-    private int indiceJogadorAtual;         // Índice do jogador que está na vez
-    private int numeroEntupimento;          // Número atual da privada
-    private boolean sentidoHorario;         // Direção do jogo
-    private List<Carta> descartePrivadas;   // Pilha de descarte das cartas privadas
-    private ArrayList<Carta> descarte;      // Pilha de descarte das cartas da privada
-    private boolean descargaAtivada;        // Indica se a descarga foi ativada
+    private List<Jogador> jogadores; // Lista de jogadores
+    private Baralho baralhoCoco; // Baralho das Cartas Cocô
+    private Baralho baralhoPrivada; // Baralho das Cartas Privadas
+    private List<Carta> privada; // Pilha de cartas na privada
+    private int indiceJogadorAtual; // Índice do jogador que está na vez
+    private int numeroEntupimento; // Número atual da privada
+    private boolean sentidoHorario; // Direção do jogo
+    private List<Carta> descartePrivadas; // Pilha de descarte das cartas privadas
+    private ArrayList<Carta> descarte; // Pilha de descarte das cartas da privada
+    private boolean descargaAtivada; // Indica se a descarga foi ativada
 
     // Construtor
-    public Jogo(List<String> nomeJogadores) {
-        if (nomeJogadores.size() < 2 || nomeJogadores.size() > 5) {
+    public Jogo(List<Jogador> jogadores) {
+        if (jogadores.size() < 2 || jogadores.size() > 5) {
             throw new IllegalArgumentException("O número de jogadores deve ser entre 2 e 5.");
         }
 
-        this.jogadores = new ArrayList<>();
-        for (String nome : nomeJogadores) {
-            jogadores.add(new Jogador(nome));
-        }
-
+        this.jogadores = jogadores;
         this.baralhoCoco = new Baralho("Cocô");
         this.baralhoPrivada = new Baralho("Privada");
         this.privada = new ArrayList<>();
@@ -34,16 +30,33 @@ public class Jogo {
         inicializarJogo();
     }
 
+    public void novoTurno() {
+        Jogador atual = getJogadorAtual();
+
+        atual.enviarMensagem("Seu Turno!");
+
+        String mensagem = atual.receberMensagem();
+
+        System.out.println(mensagem);
+        for (Jogador jogador : jogadores)
+            jogador.enviarMensagem(atual.getNome() + ": " + mensagem);
+
+        proximoTurno();
+        novoTurno();
+    }
+
     // Inicializa o jogo distribuindo cartas e escolhendo o primeiro jogador
     private void inicializarJogo() {
         distribuirCartasIniciais();
         definirNumeroEntupimento();
         selecionarJogadorInicial();
+        novoTurno();
     }
 
-      // Distribui 5 cartas Cocô para cada jogador
+    // Distribui 5 cartas Cocô para cada jogador
     private void distribuirCartasIniciais() {
         for (Jogador jogador : jogadores) {
+            jogador.limparMao();
             for (int i = 0; i < 5; i++) {
                 jogador.receberCarta(baralhoCoco.comprarCarta());
             }
@@ -179,4 +192,3 @@ public class Jogo {
         return numeroEntupimento;
     }
 }
-

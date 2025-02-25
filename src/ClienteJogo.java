@@ -12,8 +12,7 @@ public class ClienteJogo {
     private BufferedReader in;
 
     public ClienteJogo() {
-        try {
-            Scanner input = new Scanner(System.in);
+        try (Scanner input = new Scanner(System.in)) {
             System.out.println("Digite o IP do servidor (pressione Enter para usar o padrão 127.0.0.1): ");
             String servidorIP = input.nextLine().trim();
             if (servidorIP.isEmpty()) {
@@ -46,6 +45,7 @@ public class ClienteJogo {
 
     /**
      * Envia uma mensagem para o servidor.
+     * 
      * @param mensagem Mensagem a ser enviada
      */
     void enviarMensagem(String mensagem) {
